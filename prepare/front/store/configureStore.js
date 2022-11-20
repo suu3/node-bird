@@ -1,15 +1,8 @@
-import { createWrapper } from "next-redux-wrapper"; //최신 문법
-import { applyMiddleware, createStore, compose } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
-import reducer from "../reducers";
+import { createWrapper } from "next-redux-wrapper";
+import { createStore } from "redux";
 
 const configureStore = () => {
-  const middlewares = [];
-  const enhancer =
-    process.env.NODEENV === "production"
-      ? compose(applyMiddleware(...middlewares))
-      : composeWithDevTools(applyMiddleware(...middlewares));
-  const store = createStore(reducer, enhancer);
+  const store = createStore(reducer);
   return store;
 };
 
